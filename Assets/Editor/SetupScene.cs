@@ -333,7 +333,17 @@ namespace Patches.Editor
                     continue;
                 }
 
-                if (existing != null && existing.transform.Find("Image") == null)
+                bool isCorrectVariant = false;
+                if (existing != null)
+                {
+                    GameObject source = PrefabUtility.GetCorrespondingObjectFromSource(existing);
+                    if (source != null && source == basePrefab)
+                    {
+                        isCorrectVariant = true;
+                    }
+                }
+
+                if (existing != null && !isCorrectVariant)
                 {
                     AssetDatabase.DeleteAsset(prefabPath);
                     existing = null;
@@ -362,32 +372,26 @@ namespace Patches.Editor
                     continue;
                 }
 
-                // Create new prefab using the new structure
-                GameObject rootTemp = new GameObject($"Flower_{name}", typeof(RectTransform), typeof(FlowerTile));
-                GameObject childTemp = new GameObject("Image", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
-                childTemp.transform.SetParent(rootTemp.transform, false);
+                // Create a variant of the base prefab
+                GameObject variantSource = PrefabUtility.InstantiatePrefab(basePrefab) as GameObject;
+                variantSource.name = $"Flower_{name}";
 
-                RectTransform childRt = childTemp.GetComponent<RectTransform>();
-                childRt.anchorMin = Vector2.zero;
-                childRt.anchorMax = Vector2.one;
-                childRt.offsetMin = Vector2.zero;
-                childRt.offsetMax = Vector2.zero;
-
-                Image imgNew = childTemp.GetComponent<Image>();
-                imgNew.color = Color.white;
-                imgNew.sprite = flowerSprite;
-                imgNew.raycastTarget = false;
-
-                FlowerTile tileNew = rootTemp.GetComponent<FlowerTile>();
+                FlowerTile tileNew = variantSource.GetComponent<FlowerTile>();
                 tileNew.FlowerIndex = i;
 
-                // Link image
-                var serializedTile = new SerializedObject(tileNew);
-                serializedTile.FindProperty("_image").objectReferenceValue = imgNew;
-                serializedTile.ApplyModifiedProperties();
+                Transform variantChildTrans = variantSource.transform.Find("Image");
+                if (variantChildTrans != null)
+                {
+                    Image imgNew = variantChildTrans.GetComponent<Image>();
+                    if (imgNew != null)
+                    {
+                        imgNew.sprite = flowerSprite;
+                        imgNew.color = Color.white;
+                    }
+                }
 
-                GameObject prefab = PrefabUtility.SaveAsPrefabAsset(rootTemp, prefabPath);
-                DestroyImmediate(rootTemp);
+                GameObject prefab = PrefabUtility.SaveAsPrefabAsset(variantSource, prefabPath);
+                DestroyImmediate(variantSource);
                 createdPrefabs.Add(prefab);
             }
 
