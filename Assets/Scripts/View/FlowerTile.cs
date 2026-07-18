@@ -9,9 +9,12 @@ namespace Patches.View
 
         public int FlowerIndex { get; set; }
 
+        private Animator _animator;
+
         private void Awake()
         {
             EnsureImageBound();
+            _animator = GetComponent<Animator>();
         }
 
         private void EnsureImageBound()
@@ -28,6 +31,18 @@ namespace Patches.View
             if (_image != null)
             {
                 _image.sprite = sprite;
+            }
+        }
+
+        public void TriggerBloom()
+        {
+            if (_animator == null)
+            {
+                _animator = GetComponent<Animator>();
+            }
+            if (_animator != null)
+            {
+                _animator.SetTrigger("Bloom");
             }
         }
     }

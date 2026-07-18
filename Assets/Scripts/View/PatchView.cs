@@ -85,6 +85,12 @@ namespace Patches.View
                             rt.sizeDelta = new Vector2(_cellSize, _cellSize);
                             rt.anchoredPosition = new Vector2(localX * _cellSize, localY * _cellSize);
                             _spawnedFlowers.Add(flower);
+
+                            FlowerTile tile = flower.GetComponent<FlowerTile>();
+                            if (tile != null)
+                            {
+                                tile.TriggerBloom();
+                            }
                         }
                     }
                 }
