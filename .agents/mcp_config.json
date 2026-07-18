@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "unity": {
+      "command": "C:\\Users\\Rishi\\.unity\\relay\\relay_win.exe",
+      "args": [
+        "--mcp",
+        "--project-path",
+        "C:\\Users\\Rishi\\Documents\\Unity Projects\\Patches\\GardenPatch"
+      ],
+      "env": {}
+    },
+    "unity-mcp": {
+      "command": "C:\\Users\\Rishi\\.unity\\relay\\relay_win.exe",
+      "args": [
+        "--mcp",
+        "--project-path",
+        "C:\\Users\\Rishi\\Documents\\Unity Projects\\Patches\\GardenPatch"
+      ]
+    }
+  }
+}
