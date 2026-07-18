@@ -509,7 +509,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &275899347
 RectTransform:
   m_ObjectHideFlags: 0
@@ -524,7 +524,6 @@ RectTransform:
   m_Children:
   - {fileID: 123906593}
   - {fileID: 198393961}
-  - {fileID: 1124240860}
   m_Father: {fileID: 450665849}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -941,6 +940,7 @@ RectTransform:
   m_Children:
   - {fileID: 1582411330}
   - {fileID: 275899347}
+  - {fileID: 1124240860}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1348,7 +1348,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1124240859}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1357,7 +1357,7 @@ RectTransform:
   - {fileID: 293110160}
   - {fileID: 1224875296}
   - {fileID: 1851224076}
-  m_Father: {fileID: 275899347}
+  m_Father: {fileID: 450665849}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1894,7 +1894,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1582411328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2173,7 +2173,6 @@ MonoBehaviour:
   - {fileID: 6287838489075762047, guid: 8e1e14ef8ece51942aa1670c6a59fae5, type: 3}
   - {fileID: 7789961900195916619, guid: d3584bb813e8c804e9d6402376959db3, type: 3}
   - {fileID: 6150927673248380480, guid: 0518ff231b102c74db7d85ea3c83df2f, type: 3}
-  - {fileID: 2741550063618536318, guid: 448aef9ea08dce94c8c429275da845c6, type: 3}
   - {fileID: 890611401580498469, guid: 644b4218b58d9264b9c84c6df8e225f7, type: 3}
   - {fileID: 8527676889485936415, guid: bd1f7724038f24e4fb566721975cf6a3, type: 3}
   - {fileID: 1840534307312194685, guid: 95eb1f834d28c83449e72eb26af97849, type: 3}
