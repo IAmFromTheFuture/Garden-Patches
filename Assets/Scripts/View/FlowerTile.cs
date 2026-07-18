@@ -18,7 +18,7 @@ namespace Patches.View
         {
             if (_image == null)
             {
-                _image = GetComponent<Image>();
+                _image = GetComponentInChildren<Image>();
             }
         }
 
