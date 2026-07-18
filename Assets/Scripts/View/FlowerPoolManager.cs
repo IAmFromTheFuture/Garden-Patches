@@ -85,10 +85,27 @@ namespace Patches.View
                 actionOnGet: go => 
                 {
                     go.SetActive(true);
-                    Image img = go.GetComponent<Image>();
-                    if (img != null) img.enabled = true;
+                    
+                    // Enable Animator
+                    Animator anim = go.GetComponent<Animator>();
+                    if (anim != null) anim.enabled = true;
+
+                    // Enable FlowerTile
                     FlowerTile tile = go.GetComponent<FlowerTile>();
                     if (tile != null) tile.enabled = true;
+
+                    // Enable all Image components in hierarchy (since they might be on child gameobjects)
+                    Image[] images = go.GetComponentsInChildren<Image>(true);
+                    foreach (var img in images)
+                    {
+                        img.enabled = true;
+                    }
+
+                    // Ensure all child GameObjects are active (like the renamed 'Flower' object)
+                    foreach (Transform child in go.transform)
+                    {
+                        child.gameObject.SetActive(true);
+                    }
                 },
                 actionOnRelease: go => go.SetActive(false),
                 actionOnDestroy: go => Destroy(go),
